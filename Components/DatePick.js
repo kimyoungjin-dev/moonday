@@ -5,6 +5,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 
 const View = styled.View`
   justify-content: center;
+  padding-bottom: 40px;
 `;
 const DateTimePickerContainer = styled.TouchableOpacity`
   background-color: white;
@@ -37,9 +38,6 @@ const DatePick = ({ time, setTime }) => {
     const currentDate = selectedDate || time;
     setShow(Platform.OS === "ios");
     setTime(currentDate);
-    setTimeout(() => {
-      setShow(false);
-    }, 1000);
   };
 
   return (
