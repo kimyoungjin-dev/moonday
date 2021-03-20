@@ -6,7 +6,7 @@ const Container = styled.View`
 `;
 const Title = styled.Text`
   font-size: 20px;
-  color: gray;
+  color: white;
   position: absolute;
   top: 100px;
 `;
