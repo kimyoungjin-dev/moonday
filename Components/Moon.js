@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 const Container = styled.View`
   align-items: center;
 `;
+
 const MoonContainer = styled.View`
   width: 240px;
   height: 240px;

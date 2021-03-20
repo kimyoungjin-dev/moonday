@@ -7,10 +7,8 @@ const View = styled.View`
   justify-content: center;
   background-color: gray;
 `;
+
 const Button = styled.Button``;
-const Title = styled.Text`
-  color: white;
-`;
 
 const DatePick = () => {
   const [date, setDate] = useState(new Date());
