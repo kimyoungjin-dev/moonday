@@ -5,9 +5,20 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 
 const View = styled.View`
   justify-content: center;
-  background-color: gray;
 `;
-const Button = styled.Button``;
+const DateTimePickerContainer = styled.TouchableOpacity`
+  background-color: white;
+  height: 200px;
+  justify-content: center;
+`;
+const Button = styled.TouchableOpacity`
+  padding: 16px;
+`;
+const ButtonText = styled.Text`
+  font-size: 20px;
+  text-align: center;
+  color: white;
+`;
 
 const DatePick = ({ time, setTime }) => {
   const [show, setShow] = useState(false);
@@ -16,7 +27,9 @@ const DatePick = ({ time, setTime }) => {
     const newDate = new Date(date);
     return newDate.toString().substring(4, 15);
   };
-
+  const onLongPress = () => {
+    setTime(new Date());
+  };
   const onPress = () => {
     setShow((prev) => !prev);
   };
@@ -24,20 +37,27 @@ const DatePick = ({ time, setTime }) => {
     const currentDate = selectedDate || time;
     setShow(Platform.OS === "ios");
     setTime(currentDate);
+    setTimeout(() => {
+      setShow(false);
+    }, 1000);
   };
 
   return (
     <View>
-      <Button onPress={onPress} title={dateToString(time)} color="black" />
       {show && (
-        <DateTimePicker
-          value={time}
-          mode="date"
-          is24Hour={true}
-          display="spinner"
-          onChange={onChange}
-        />
+        <DateTimePickerContainer onPress={onPress}>
+          <DateTimePicker
+            value={time}
+            mode="date"
+            is24Hour={true}
+            display="spinner"
+            onChange={onChange}
+          />
+        </DateTimePickerContainer>
       )}
+      <Button onPress={onPress} onLongPress={onLongPress}>
+        <ButtonText>{dateToString(time)}</ButtonText>
+      </Button>
     </View>
   );
 };

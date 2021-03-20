@@ -1,17 +1,19 @@
 import React from "react";
-import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
+import { Dimensions } from "react-native";
 
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.View`
   align-items: center;
+  position: absolute;
+  top: ${HEIGHT / 2 - 160}px;
+  left: ${WIDTH / 2 - 120}px;
 `;
-
 const MoonContainer = styled.TouchableOpacity`
   width: 240px;
   height: 240px;
   border-radius: 120px;
-  margin: 200px 0 40px;
-  background-color: gray;
+  background-color: white;
 `;
 
 const Moon = ({ toggleEditing }) => {
