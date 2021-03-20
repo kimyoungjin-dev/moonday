@@ -1,11 +1,12 @@
 import React from "react";
+import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 
 const Container = styled.View`
   align-items: center;
 `;
 
-const MoonContainer = styled.View`
+const MoonContainer = styled.TouchableOpacity`
   width: 240px;
   height: 240px;
   border-radius: 120px;
@@ -13,10 +14,11 @@ const MoonContainer = styled.View`
   background-color: gray;
 `;
 
-const Moon = () => {
+const Moon = ({ toggleEditing }) => {
   return (
     <Container>
       <MoonContainer
+        onPress={toggleEditing}
         style={{
           shadowColor: "white",
           shadowOpacity: 0.5,
