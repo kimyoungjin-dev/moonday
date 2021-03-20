@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import DatePick from "../../Components/DatePick";
+import Moon from "../../Components/Moon";
 
 const Container = styled.View`
   flex: 1;
