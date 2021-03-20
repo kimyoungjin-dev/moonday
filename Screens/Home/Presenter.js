@@ -4,7 +4,7 @@ import { StatusBar } from "react-native";
 import DatePick from "../../Components/DatePick";
 import Moon from "../../Components/Moon";
 import Percent from "../../Components/Percent";
-import Detail from "../../Components/Detail";
+import Detail from "../../Components/DetailFolder/Detail";
 
 const Container = styled.View`
   flex: 1;
