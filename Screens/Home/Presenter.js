@@ -16,7 +16,7 @@ const Title = styled.Text`
 const Presenter = ({ time, setTime, data, toggleEditing, editing }) => {
   return (
     <Container>
-      <Percent />
+      <Percent data={data} />
       <Moon toggleEditing={toggleEditing} />
       {editing && <Detail />}
       {!editing && <DatePick time={time} setTime={setTime} />}

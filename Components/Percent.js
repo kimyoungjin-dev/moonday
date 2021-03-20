@@ -11,10 +11,16 @@ const Title = styled.Text`
   top: 100px;
 `;
 
-const Percent = ({ percentage = 0 }) => {
+const Percent = ({ data: { illumination, stage } }) => {
+  const firstUppercase = (str) => {
+    return str?.charAt(0).toUpperCase() + str?.slice(1);
+  };
+
   return (
     <Container>
-      <Title>The Moon ({percentage}%)</Title>
+      <Title>
+        {firstUppercase(stage)} Moon ({Math.floor(illumination)}%)
+      </Title>
     </Container>
   );
 };
