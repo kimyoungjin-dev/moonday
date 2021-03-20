@@ -25,7 +25,7 @@ const Presenter = ({ time, setTime, data, toggleEditing, editing }) => {
       />
       <Percent data={data} />
       <Moon toggleEditing={toggleEditing} />
-      {editing && <Detail />}
+      {editing && <Detail data={data} toggleEditing={toggleEditing} />}
       {!editing && <DatePick time={time} setTime={setTime} />}
     </Container>
   );
