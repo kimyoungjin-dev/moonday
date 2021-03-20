@@ -7,11 +7,9 @@ const View = styled.View`
   justify-content: center;
   background-color: gray;
 `;
-
 const Button = styled.Button``;
 
-const DatePick = () => {
-  const [date, setDate] = useState(new Date());
+const DatePick = ({ time, setTime }) => {
   const [show, setShow] = useState(false);
 
   const dateToString = (date) => {
@@ -23,17 +21,17 @@ const DatePick = () => {
     setShow((prev) => !prev);
   };
   const onChange = (event, selectedDate) => {
-    const currentDate = selectedDate || date;
+    const currentDate = selectedDate || time;
     setShow(Platform.OS === "ios");
-    setDate(currentDate);
+    setTime(currentDate);
   };
 
   return (
     <View>
-      <Button onPress={onPress} title={dateToString(date)} />
+      <Button onPress={onPress} title={dateToString(time)} color="black" />
       {show && (
         <DateTimePicker
-          value={date}
+          value={time}
           mode="date"
           is24Hour={true}
           display="spinner"
