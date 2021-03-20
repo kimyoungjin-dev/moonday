@@ -12,12 +12,12 @@ const Title = styled.Text`
   color: white;
 `;
 
-const Presenter = () => {
+const Presenter = ({ time, setTime }) => {
   return (
     <Container>
       <Percent />
       <Moon />
-      <DatePick />
+      <DatePick time={time} setTime={setTime} />
     </Container>
   );
 };
