@@ -4,7 +4,8 @@ import { moonApi } from "../../api";
 
 const Container = () => {
   const getData = async () => {
-    const data = await moonApi();
+    const currentTime = Math.floor(new Date() / 1000);
+    const data = await moonApi(currentTime);
     console.log(data);
   };
 

@@ -8,15 +8,4 @@ const api = axios.create({
   },
 });
 
-const api2 = axios.create({
-  baseURL: "https://moon-phase.p.rapidapi.com",
-  params: { raw: "true" },
-  headers: {
-    "x-rapidapi-key": "57569344bdmshc8ea641764a873fp13f966jsnaf738e6d01b5",
-    "x-rapidapi-host": "moon-phase.p.rapidapi.com",
-  },
-});
-
-export const moonApi = () => api.get("/1606888400");
-//moonphase
-export const moonPhaseApi = () => api2.get("/moon_phase");
+export const moonApi = (timestamp) => api.get(`/${timestamp}`);
