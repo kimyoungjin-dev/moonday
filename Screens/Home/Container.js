@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import Presenter from "./Presenter";
 import { moonApi } from "../../api";
 import { Alert } from "react-native";
-import Loading from "../../Components/Loading";
 
 const Container = () => {
-  const [loading, setLoading] = useState(true);
   const [time, setTime] = useState(new Date());
   const [editing, setEditing] = useState(false);
   const [data, setData] = useState([]);
   const [leftMoon, setLeftMoon] = useState();
+  const [loading, setLoading] = useState(true);
 
   const toggleEditing = () => setEditing((prev) => !prev);
 
@@ -28,7 +27,7 @@ const Container = () => {
     } catch (error) {
       Alert.alert(error);
     } finally {
-      setLoading(true);
+      setLoading(false);
     }
   };
 
@@ -37,20 +36,15 @@ const Container = () => {
   }, [time]);
 
   return (
-    <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <Presenter
-          time={time}
-          setTime={setTime}
-          data={data}
-          toggleEditing={toggleEditing}
-          editing={editing}
-          leftMoon={leftMoon}
-        />
-      )}
-    </>
+    <Presenter
+      loading={loading}
+      time={time}
+      setTime={setTime}
+      data={data}
+      toggleEditing={toggleEditing}
+      editing={editing}
+      leftMoon={leftMoon}
+    />
   );
 };
 
