@@ -16,7 +16,7 @@ const MoonContainer = styled.TouchableOpacity`
   background-color: white;
 `;
 
-const Moon = ({ toggleEditing }) => {
+const Moon = ({ toggleEditing, data }) => {
   return (
     <Container>
       <MoonContainer

@@ -24,7 +24,7 @@ const Presenter = ({ time, setTime, data, toggleEditing, editing }) => {
         barStyle="light-content"
       />
       <Percent data={data} />
-      <Moon toggleEditing={toggleEditing} />
+      <Moon toggleEditing={toggleEditing} data={data} />
       {editing && <Detail data={data} toggleEditing={toggleEditing} />}
       {!editing && <DatePick time={time} setTime={setTime} />}
     </Container>

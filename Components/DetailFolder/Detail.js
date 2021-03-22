@@ -6,7 +6,7 @@ import IconList from "./IconList";
 const Container = styled.View`
   align-items: center;
   background-color: black;
-  padding-bottom: 100px;
+  padding-bottom: 40px;
 `;
 const MoonContainer = styled.View``;
 const DataContainer = styled.View`

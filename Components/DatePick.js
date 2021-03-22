@@ -5,11 +5,11 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 
 const View = styled.View`
   justify-content: center;
-  padding-bottom: 40px;
+  padding-bottom: 10px;
 `;
 const DateTimePickerContainer = styled.TouchableOpacity`
   background-color: white;
-  height: 200px;
+  height: 180px;
   justify-content: center;
 `;
 const Button = styled.TouchableOpacity`
