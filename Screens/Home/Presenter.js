@@ -15,7 +15,14 @@ const Title = styled.Text`
   color: white;
 `;
 
-const Presenter = ({ time, setTime, data, toggleEditing, editing }) => {
+const Presenter = ({
+  time,
+  setTime,
+  data,
+  toggleEditing,
+  editing,
+  leftMoon,
+}) => {
   return (
     <Container>
       <StatusBar
@@ -24,7 +31,7 @@ const Presenter = ({ time, setTime, data, toggleEditing, editing }) => {
         barStyle="light-content"
       />
       <Percent data={data} />
-      <Moon toggleEditing={toggleEditing} data={data} />
+      <Moon toggleEditing={toggleEditing} data={data} leftMoon={leftMoon} />
       {editing && <Detail data={data} toggleEditing={toggleEditing} />}
       {!editing && <DatePick time={time} setTime={setTime} />}
     </Container>

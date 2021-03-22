@@ -13,24 +13,47 @@ const MoonContainer = styled.TouchableOpacity`
   width: 240px;
   height: 240px;
   border-radius: 120px;
-  background-color: white;
+  background-color: yellow;
+  overflow: hidden;
+`;
+const ArcShadow = styled.View`
+  width: 240px;
+  height: 240px;
+  border-radius: 120px;
+  background-color: black;
+  position: absolute;
+`;
+const HalfShadow = styled.View`
+  width: 240px;
+  height: 240px;
+  background-color: blue;
+  position: absolute;
 `;
 
-const Moon = ({ toggleEditing, data }) => {
+const Moon = ({ toggleEditing, data: { illumination }, leftMoon }) => {
+  console.log(illumination);
+  console.log(leftMoon);
+
   return (
     <Container>
-      <MoonContainer
-        onPress={toggleEditing}
-        style={{
-          shadowColor: "white",
-          shadowOpacity: 0.5,
-          shadowRadius: 10,
-          shadowOffset: {
-            width: 0,
-            height: 0,
-          },
-        }}
-      />
+      {illumination && (
+        <>
+          <MoonContainer
+            onPress={toggleEditing}
+            style={{
+              shadowColor: "white",
+              shadowOpacity: 0.5,
+              shadowRadius: 10,
+              shadowOffset: {
+                width: 0,
+                height: 0,
+              },
+            }}
+          />
+          <HalfShadow style={{ transform: [{ scaleX: illumination / 100 }] }} />
+          <ArcShadow style={{ transform: [{ scaleX: illumination / 100 }] }} />
+        </>
+      )}
     </Container>
   );
 };
