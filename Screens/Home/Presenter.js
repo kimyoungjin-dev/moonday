@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import { StatusBar } from "react-native";
+import { ActivityIndicator, StatusBar } from "react-native";
 import DatePick from "../../Components/DatePick";
 import Moon from "../../Components/Moon";
 import Percent from "../../Components/Percent";
@@ -22,18 +22,31 @@ const Presenter = ({
   toggleEditing,
   editing,
   leftMoon,
+  loading,
 }) => {
   return (
-    <Container>
-      <StatusBar
-        animated={true}
-        backgroundColor="black"
-        barStyle="light-content"
-      />
-      <Percent data={data} />
-      <Moon toggleEditing={toggleEditing} data={data} leftMoon={leftMoon} />
-      {editing && <Detail data={data} toggleEditing={toggleEditing} />}
-      {!editing && <DatePick time={time} setTime={setTime} />}
+    <Container
+      style={{
+        backgroundColor: "black",
+        flex: loading ? 1 : "auto",
+        justifyContent: loading ? "center" : "flex-end",
+      }}
+    >
+      {loading ? (
+        <ActivityIndicator size="large" color="white" />
+      ) : (
+        <>
+          <StatusBar
+            animated={true}
+            backgroundColor="black"
+            barStyle="light-content"
+          />
+          <Percent data={data} />
+          <Moon toggleEditing={toggleEditing} data={data} leftMoon={leftMoon} />
+          {editing && <Detail data={data} toggleEditing={toggleEditing} />}
+          {!editing && <DatePick time={time} setTime={setTime} />}
+        </>
+      )}
     </Container>
   );
 };
