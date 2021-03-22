@@ -19,7 +19,7 @@ const Percent = ({ data: { illumination, stage } }) => {
   return (
     <Container>
       <Title>
-        {firstUppercase(stage)} Moon ({Math.floor(illumination)}%)
+        {firstUppercase(stage)} Moon ({Math.round(illumination)}%)
       </Title>
     </Container>
   );
