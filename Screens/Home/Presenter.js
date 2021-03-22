@@ -6,7 +6,7 @@ import Moon from "../../Components/Moon";
 import Percent from "../../Components/Percent";
 import Detail from "../../Components/DetailFolder/Detail";
 
-const Container = styled.View`
+const Container = styled.TouchableHighlight`
   flex: 1;
   background-color: black;
   justify-content: space-between;
@@ -28,9 +28,10 @@ const Presenter = ({
     <Container
       style={{
         backgroundColor: "black",
-        flex: loading ? 1 : "auto",
-        justifyContent: loading ? "center" : "flex-end",
+        flex: loading ? 1 : 1,
+        justifyContent: loading ? "center" : "space-between",
       }}
+      onPress={() => toggleEditing((prev) => !prev)}
     >
       {loading ? (
         <ActivityIndicator size="large" color="white" />
