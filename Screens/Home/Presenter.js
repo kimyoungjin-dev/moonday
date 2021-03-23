@@ -5,6 +5,7 @@ import DatePick from "../../Components/DatePick";
 import Moon from "../../Components/Moon";
 import Percent from "../../Components/Percent";
 import Detail from "../../Components/DetailFolder/Detail";
+import Animation from "../../Components/Animation";
 
 const Container = styled.TouchableHighlight`
   flex: 1;
@@ -39,10 +40,12 @@ const Presenter = ({
             backgroundColor="black"
             barStyle="light-content"
           />
+
           <Percent data={data} />
           <Moon toggleEditing={toggleEditing} data={data} leftMoon={leftMoon} />
           {editing && <Detail data={data} toggleEditing={toggleEditing} />}
           {!editing && <DatePick time={time} setTime={setTime} />}
+          <Animation />
         </>
       )}
     </Container>
