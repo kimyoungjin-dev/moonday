@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Platform } from "react-native";
 import styled from "styled-components/native";
 import DateTimePicker from "@react-native-community/datetimepicker";
+import { LinearGradient } from "expo-linear-gradient";
 
 const View = styled.View`
   justify-content: center;

@@ -11,9 +11,6 @@ const Container = styled.TouchableHighlight`
   background-color: black;
   justify-content: space-between;
 `;
-const Title = styled.Text`
-  color: white;
-`;
 
 const Presenter = ({
   time,
