@@ -11,9 +11,6 @@ const Container = styled.TouchableHighlight`
   background-color: black;
   justify-content: space-between;
 `;
-const Title = styled.Text`
-  color: white;
-`;
 
 const Presenter = ({
   time,
@@ -34,7 +31,7 @@ const Presenter = ({
       onPress={() => toggleEditing((prev) => !prev)}
     >
       {loading ? (
-        <ActivityIndicator size="large" color="white" />
+        <ActivityIndicator size="small" color="white" />
       ) : (
         <>
           <StatusBar
