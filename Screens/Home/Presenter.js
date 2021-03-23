@@ -31,7 +31,7 @@ const Presenter = ({
       onPress={() => toggleEditing((prev) => !prev)}
     >
       {loading ? (
-        <ActivityIndicator size="large" color="white" />
+        <ActivityIndicator size="small" color="white" />
       ) : (
         <>
           <StatusBar

@@ -6,11 +6,10 @@ import { LinearGradient } from "expo-linear-gradient";
 
 const View = styled.View`
   justify-content: center;
-  padding-bottom: 10px;
 `;
 const DateTimePickerContainer = styled.TouchableOpacity`
   background-color: white;
-  height: 180px;
+  height: 160px;
   justify-content: center;
 `;
 const Button = styled.TouchableOpacity`
@@ -20,6 +19,12 @@ const ButtonText = styled.Text`
   font-size: 20px;
   text-align: center;
   color: white;
+`;
+const Gradient = styled.View`
+  width: 100%;
+  height: 40px;
+  position: absolute;
+  top: 0px;
 `;
 
 const DatePick = ({ time, setTime }) => {
@@ -54,6 +59,20 @@ const DatePick = ({ time, setTime }) => {
           />
         </DateTimePickerContainer>
       )}
+
+      <Gradient>
+        <LinearGradient
+          colors={["rgba(0,0,0,1)", "rgba(0,0,0,0)"]}
+          style={{ height: 40, top: 0 }}
+        />
+      </Gradient>
+      <Gradient>
+        <LinearGradient
+          colors={["rgba(0,0,0,0)", "rgba(0,0,0,1)"]}
+          style={{ height: 40, top: 120 }}
+        />
+      </Gradient>
+
       <Button onPress={onPress} onLongPress={onLongPress}>
         <ButtonText>{dateToString(time)}</ButtonText>
       </Button>
