@@ -25,11 +25,11 @@ const HalfShadow = styled.View`
   position: absolute;
 `;
 
-const Moon = ({ toggleEditing, data: { illumination }, leftMoon }) => {
+const Moon = ({ data: { illumination }, leftMoon }) => {
   return (
-    <Container onPress={toggleEditing}>
+    <Container>
       {illumination && (
-        <MoonContainer onPress={toggleEditing}>
+        <MoonContainer>
           <HalfShadow
             style={{
               backgroundColor: leftMoon ? "transparent" : "black",

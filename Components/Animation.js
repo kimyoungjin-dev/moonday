@@ -20,10 +20,11 @@ const MoonContainer = styled.View`
   border-radius: 60px;
 `;
 
-const Animation = ({ toggleEditing, data, leftMoon }) => {
+const Animation = ({ data, leftMoon }) => {
   const position = new Animated.ValueXY();
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
+
     onPanResponderMove: (event, { dx, dy }) => {
       position.setValue({
         x: dx,
@@ -32,10 +33,12 @@ const Animation = ({ toggleEditing, data, leftMoon }) => {
     },
     onPanResponderRelease: (event, { dx, dy }) => {
       const moveToCenter = dx < -60 && dy > 80;
+      const notMoveBack = dx < -400 || dy > 400;
+
       Animated.timing(position, {
         toValue: {
-          x: moveToCenter ? -(WIDTH / 2 - 20) : 0,
-          y: moveToCenter ? HEIGHT / 2 - 140 : 0,
+          x: notMoveBack ? 0 : moveToCenter ? -(WIDTH / 2 - 20) : 0,
+          y: notMoveBack ? 0 : moveToCenter ? HEIGHT / 2 - 140 : 0,
         },
         duration: 800,
       }).start(() => {});
@@ -61,7 +64,7 @@ const Animation = ({ toggleEditing, data, leftMoon }) => {
         }}
       >
         <MoonContainer style={{}}>
-          <Moon toggleEditing={toggleEditing} data={data} leftMoon={leftMoon} />
+          <Moon data={data} leftMoon={leftMoon} />
         </MoonContainer>
       </Animated.View>
     </Container>
