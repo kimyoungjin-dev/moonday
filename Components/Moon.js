@@ -1,15 +1,11 @@
 import React from "react";
 import styled from "styled-components/native";
-import { Dimensions } from "react-native";
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
-const RADIUS = 120;
+const RADIUS = 60;
 
-const Container = styled.TouchableOpacity`
-  align-items: center;
-  position: absolute;
-  top: ${HEIGHT / 2 - 160}px;
-  left: ${WIDTH / 2 - 120}px;
+const Container = styled.View`
+  width: ${RADIUS * 2}px;
+  height: ${RADIUS * 2}px;
 `;
 const MoonContainer = styled.View`
   width: ${RADIUS * 2}px;
@@ -29,22 +25,11 @@ const HalfShadow = styled.View`
   position: absolute;
 `;
 
-const Moon = ({ toggleEditing, data: { illumination }, leftMoon }) => {
+const Moon = ({ data: { illumination }, leftMoon }) => {
   return (
-    <Container onPress={toggleEditing}>
+    <Container>
       {illumination && (
-        <>
-          <MoonContainer
-            style={{
-              shadowColor: "white",
-              shadowOpacity: 0,
-              shadowRadius: 10,
-              shadowOffset: {
-                width: 0,
-                height: 0,
-              },
-            }}
-          />
+        <MoonContainer>
           <HalfShadow
             style={{
               backgroundColor: leftMoon ? "transparent" : "black",
@@ -54,7 +39,7 @@ const Moon = ({ toggleEditing, data: { illumination }, leftMoon }) => {
           <HalfShadow
             style={{
               backgroundColor: leftMoon ? "black" : "transparent",
-              left: 120,
+              left: RADIUS,
             }}
           />
           <ArcShadow
@@ -72,7 +57,7 @@ const Moon = ({ toggleEditing, data: { illumination }, leftMoon }) => {
               backgroundColor: illumination < 50 ? "black" : "white",
             }}
           />
-        </>
+        </MoonContainer>
       )}
     </Container>
   );
