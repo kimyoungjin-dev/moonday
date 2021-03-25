@@ -1,87 +1,62 @@
 import React from "react";
-import { PanResponder, Animated } from "react-native";
+import { PanResponder, Animated, Dimensions } from "react-native";
 import styled from "styled-components/native";
 
-const Box = styled.View`
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
+const MoonBox = styled.View`
+  width: 100%;
+  height: ${HEIGHT - 200}px;
+  margin-top: 20px;
   position: absolute;
-  flex: 1;
   align-items: flex-end;
-  padding-top: 20px;
-  right: 0;
+  justify-content: flex-start;
 `;
-
 const styles = {
-  borderRadius: 100,
-  width: 100,
-  height: 100,
+  borderRadius: 60,
+  width: 120,
+  height: 120,
 };
 
 const Animation = () => {
   const position = new Animated.ValueXY();
-
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onPanResponderMove: (event, { dx, dy }) => {
       position.setValue({ x: dx, y: dy });
-      console.log(dx, dy);
     },
-
     onPanResponderRelease: (event, { dx, dy }) => {
-      if (dx <= -130 && dy >= 200) {
-        Animated.timing(position, {
-          toValue: {
-            x: dx,
-            y: dy,
-          },
-        });
-      } else {
-        Animated.timing(position, {
-          toValue: 1,
-          duration: 3000,
-        }).start();
-      }
+      console.log(dx, dy);
+      const moveToCenter = dx < -60 && dy > 80;
+      Animated.timing(position, {
+        toValue: {
+          x: moveToCenter ? -(WIDTH / 2 - 60) : 0,
+          y: moveToCenter ? HEIGHT / 2 - 120 : 0,
+        },
+        duration: 500,
+      }).start();
     },
   });
-
-  const roationValues = position.x.interpolate({
-    inputRange: [-100, 0, 100],
-    outputRange: ["-5deg", "0deg", "5deg"],
-    extrapolate: "clamp",
-  });
-
-  const Opacity = position.x.interpolate({
-    inputRange: [-255, 0, 255],
-    outputRange: [1, 0.2, 1],
-    extrapolate: "clamp",
-  });
-
   const Scale = position.x.interpolate({
-    inputRange: [-255, 0, 255],
-    outputRange: [5, 0.8, 5],
+    inputRange: [-(WIDTH / 2 - 50), 0],
+    outputRange: [2, 0.5],
     extrapolate: "clamp",
   });
-
   const Color = position.x.interpolate({
-    inputRange: [0, 100],
-    outputRange: ["yellow", "red"],
+    inputRange: [-WIDTH / 2 + 100, 0],
+    outputRange: ["rgba(255,255,255,1)", "rgba(255,255,255,1)"],
+    extrapolate: "clamp",
   });
-
   return (
-    <Box>
+    <MoonBox>
       <Animated.View
         {...panResponder.panHandlers}
         style={{
           backgroundColor: Color,
-          opacity: Opacity,
           ...styles,
-          transform: [
-            ...position.getTranslateTransform(),
-            { rotate: roationValues },
-            { scale: Scale },
-          ],
+          transform: [...position.getTranslateTransform(), { scale: Scale }],
         }}
       ></Animated.View>
-    </Box>
+    </MoonBox>
   );
 };
 
