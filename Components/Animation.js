@@ -1,23 +1,25 @@
 import React from "react";
 import { PanResponder, Animated, Dimensions } from "react-native";
 import styled from "styled-components/native";
+import Moon from "./Moon";
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
-const MoonBox = styled.View`
+
+const Container = styled.View`
   width: 100%;
-  height: ${HEIGHT - 200}px;
-  margin-top: 20px;
+  height: 1px;
+  margin-top: 40px;
   position: absolute;
   align-items: flex-end;
   justify-content: flex-start;
 `;
-const styles = {
-  borderRadius: 60,
-  width: 120,
-  height: 120,
-};
+const MoonContainer = styled.View`
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
+`;
 
-const Animation = () => {
+const Animation = ({ toggleEditing, data, leftMoon }) => {
   const position = new Animated.ValueXY();
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -25,14 +27,13 @@ const Animation = () => {
       position.setValue({ x: dx, y: dy });
     },
     onPanResponderRelease: (event, { dx, dy }) => {
-      console.log(dx, dy);
       const moveToCenter = dx < -60 && dy > 80;
       Animated.timing(position, {
         toValue: {
           x: moveToCenter ? -(WIDTH / 2 - 60) : 0,
-          y: moveToCenter ? HEIGHT / 2 - 120 : 0,
+          y: moveToCenter ? HEIGHT / 2 - 160 : 0,
         },
-        duration: 500,
+        duration: 1000,
       }).start();
     },
   });
@@ -47,16 +48,19 @@ const Animation = () => {
     extrapolate: "clamp",
   });
   return (
-    <MoonBox>
+    <Container>
       <Animated.View
         {...panResponder.panHandlers}
         style={{
-          backgroundColor: Color,
-          ...styles,
+          // backgroundColor: Color,
           transform: [...position.getTranslateTransform(), { scale: Scale }],
         }}
-      ></Animated.View>
-    </MoonBox>
+      >
+        <MoonContainer>
+          <Moon toggleEditing={toggleEditing} data={data} leftMoon={leftMoon} />
+        </MoonContainer>
+      </Animated.View>
+    </Container>
   );
 };
 
