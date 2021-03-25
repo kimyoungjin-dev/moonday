@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { PanResponder, Animated, Dimensions } from "react-native";
 import styled from "styled-components/native";
 import Moon from "./Moon";
@@ -14,12 +14,14 @@ const Container = styled.View`
   justify-content: flex-start;
 `;
 const MoonContainer = styled.View`
-  width: 120px;
-  height: 120px;
+  width: 60px;
+  height: 60px;
   border-radius: 60px;
 `;
 
 const Animation = ({ toggleEditing, data, leftMoon }) => {
+  const [moonMove, setMoonMove] = useState(true);
+
   const position = new Animated.ValueXY();
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -30,16 +32,18 @@ const Animation = ({ toggleEditing, data, leftMoon }) => {
       const moveToCenter = dx < -60 && dy > 80;
       Animated.timing(position, {
         toValue: {
-          x: moveToCenter ? -(WIDTH / 2 - 60) : 0,
-          y: moveToCenter ? HEIGHT / 2 - 160 : 0,
+          x: moveToCenter ? -(WIDTH / 2 - 120) : 0,
+          y: moveToCenter ? HEIGHT / 2 - 140 : 0,
         },
-        duration: 1000,
-      }).start();
+        duration: 800,
+      }).start(({ finished }) => {
+        console.log(finished);
+      });
     },
   });
   const Scale = position.x.interpolate({
     inputRange: [-(WIDTH / 2 - 50), 0],
-    outputRange: [2, 0.5],
+    outputRange: [2, 1],
     extrapolate: "clamp",
   });
   const Color = position.x.interpolate({

@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components/native";
-import { Dimensions } from "react-native";
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const RADIUS = 60;
 
 const Container = styled.View`
   position: absolute;
-  left: ${WIDTH / 2 - 200}px;
+  left: -80px;
   border-radius: ${RADIUS}px;
   overflow: hidden;
 `;
