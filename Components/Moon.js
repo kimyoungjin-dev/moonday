@@ -4,10 +4,8 @@ import styled from "styled-components/native";
 const RADIUS = 60;
 
 const Container = styled.View`
-  position: absolute;
-  left: -80px;
-  border-radius: ${RADIUS}px;
-  overflow: hidden;
+  width: ${RADIUS * 2}px;
+  height: ${RADIUS * 2}px;
 `;
 const MoonContainer = styled.View`
   width: ${RADIUS * 2}px;
@@ -31,7 +29,7 @@ const Moon = ({ toggleEditing, data: { illumination }, leftMoon }) => {
   return (
     <Container onPress={toggleEditing}>
       {illumination && (
-        <MoonContainer>
+        <MoonContainer onPress={toggleEditing}>
           <HalfShadow
             style={{
               backgroundColor: leftMoon ? "transparent" : "black",
