@@ -9,6 +9,7 @@ const Container = styled.View`
   align-items: center;
   padding-left: 30px;
   padding-top: 100px;
+  position: absolute;
 `;
 const Image = styled.Image`
   height: 150%;
