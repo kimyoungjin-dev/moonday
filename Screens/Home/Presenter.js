@@ -11,6 +11,10 @@ const Container = styled.TouchableHighlight`
   justify-content: space-between;
 `;
 
+const Image = styled.Image`
+  position: absolute;
+`;
+
 const Presenter = ({
   time,
   setTime,
@@ -33,12 +37,13 @@ const Presenter = ({
         <ActivityIndicator size="small" color="white" />
       ) : (
         <>
+          <Image source={require("../../assets/starBackground.png")} />
           <StatusBar
             animated={true}
             backgroundColor="black"
             barStyle="light-content"
           />
-          {!editing && <Moon data={data} leftMoon={leftMoon} />}
+          <Moon data={data} leftMoon={leftMoon} />
           {editing && <Detail data={data} />}
           {!editing && <DatePick time={time} setTime={setTime} />}
         </>

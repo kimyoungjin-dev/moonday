@@ -36,10 +36,6 @@ const DetailContainer = ({ data }) => {
 
   return (
     <Container>
-      <Image
-        resizeMode="contain"
-        source={require("../../assets/DetailBackground.jpg")}
-      />
       <TopContainer />
       <BottomContainer
         fullYear={fullYear}
