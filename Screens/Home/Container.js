@@ -17,6 +17,7 @@ const Container = () => {
       const {
         data: { moon },
       } = await moonApi(Math.floor(time / 1000));
+      console.log(moon);
       setData(moon);
 
       const nextDay = new Date(time.getTime() + 86400000);
