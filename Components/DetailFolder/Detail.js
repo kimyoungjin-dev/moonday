@@ -9,7 +9,7 @@ const Container = styled.View`
   align-items: center;
   padding-left: 30px;
   padding-top: 100px;
-  background-color: black;
+  position: absolute;
 `;
 
 const Image = styled.Image`
@@ -37,10 +37,6 @@ const DetailContainer = ({ data }) => {
 
   return (
     <Container>
-      <Image
-        resizeMode="contain"
-        source={require("../../assets/DetailBackground.jpg")}
-      />
       <TopContainer />
       <BottomContainer
         fullYear={fullYear}
