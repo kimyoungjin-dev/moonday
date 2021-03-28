@@ -8,9 +8,25 @@ const View = styled.View`
   z-index: 999;
 `;
 const DateTimePickerContainer = styled.TouchableOpacity`
-  background-color: white;
+  width: 100%;
   height: 160px;
   justify-content: center;
+  background-color: #ffffff;
+`;
+const TodayButtonContainer = styled.View`
+  align-items: flex-end;
+`;
+const TodayButton = styled.TouchableOpacity`
+  width: 80px;
+  padding: 6px 8px;
+  border: 1px solid white;
+  border-radius: 40px;
+  margin: 16px;
+`;
+const TodayButtonText = styled.Text`
+  font-size: 18px;
+  text-align: center;
+  color: white;
 `;
 const Button = styled.TouchableOpacity`
   padding: 16px;
@@ -28,7 +44,7 @@ const DatePick = ({ time, setTime }) => {
     const newDate = new Date(date);
     return newDate.toString().substring(4, 15);
   };
-  const onLongPress = () => {
+  const setToday = () => {
     setTime(new Date());
   };
   const onPress = () => {
@@ -43,20 +59,35 @@ const DatePick = ({ time, setTime }) => {
   return (
     <View>
       {show && (
-        <DateTimePickerContainer onPress={onPress}>
-          <DateTimePicker
-            value={time}
-            mode="date"
-            is24Hour={true}
-            display="spinner"
-            onChange={onChange}
-          />
-        </DateTimePickerContainer>
+        <>
+          <TodayButtonContainer>
+            <TodayButton
+              onPress={() => {
+                setToday();
+                onPress();
+              }}
+            >
+              <TodayButtonText>Today</TodayButtonText>
+            </TodayButton>
+          </TodayButtonContainer>
+
+          <DateTimePickerContainer onPress={onPress}>
+            <DateTimePicker
+              value={time}
+              mode="date"
+              is24Hour={true}
+              display="spinner"
+              onChange={onChange}
+            />
+          </DateTimePickerContainer>
+        </>
       )}
 
-      <Button onPress={onPress} onLongPress={onLongPress}>
-        <ButtonText>{dateToString(time)}</ButtonText>
-      </Button>
+      {!show && (
+        <Button onPress={onPress}>
+          <ButtonText>{dateToString(time)}</ButtonText>
+        </Button>
+      )}
     </View>
   );
 };
