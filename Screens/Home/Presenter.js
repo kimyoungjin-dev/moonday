@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components/native";
 import { ActivityIndicator, StatusBar } from "react-native";
 import DatePick from "../../Components/DatePick";
-import Percent from "../../Components/Percent";
 import Detail from "../../Components/DetailFolder/Detail";
 import Moon from "../../Components/Moon";
 
@@ -10,6 +9,10 @@ const Container = styled.TouchableHighlight`
   flex: 1;
   background-color: black;
   justify-content: space-between;
+`;
+
+const Image = styled.Image`
+  position: absolute;
 `;
 
 const Presenter = ({
@@ -34,6 +37,7 @@ const Presenter = ({
         <ActivityIndicator size="small" color="white" />
       ) : (
         <>
+          <Image source={require("../../assets/starBackground.png")} />
           <StatusBar
             animated={true}
             backgroundColor="black"
