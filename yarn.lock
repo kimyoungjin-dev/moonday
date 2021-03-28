@@ -1773,6 +1773,11 @@
   dependencies:
     invariant "^2.2.4"
 
+"@react-native-masked-view/masked-view@^0.2.3":
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/@react-native-masked-view/masked-view/-/masked-view-0.2.3.tgz#5f7a39be4787c89d5b35ac80de2ea5d0a0bb64d7"
+  integrity sha512-t8VcdaFbyXscNs26h/NCsPqVjawWHhIMzGBR9oCIx6kbDa7JW3Q67lNLGkzDudSVnw3Qv09JZrkLXXOGjOABpg==
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.3.tgz#4ba8ddb720221f432e443bd5f9117fd22cfd4762"
