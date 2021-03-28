@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { PanResponder, Animated } from "react-native";
 import styled from "styled-components/native";
 
@@ -18,12 +18,11 @@ const styles = {
 
 const Animation = () => {
   const position = new Animated.ValueXY();
-
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onPanResponderMove: (event, { dx, dy }) => {
-      position.setValue({ x: dx, y: dy });
       console.log(dx, dy);
+      position.setValue({ x: dx, y: dy });
     },
 
     onPanResponderRelease: (event, { dx, dy }) => {
@@ -33,7 +32,7 @@ const Animation = () => {
             x: dx,
             y: dy,
           },
-        });
+        }).start(setStopMovieng(false));
       } else {
         Animated.timing(position, {
           toValue: 1,
