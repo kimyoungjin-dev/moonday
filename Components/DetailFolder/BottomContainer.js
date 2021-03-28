@@ -5,32 +5,27 @@ const Container = styled.View`
   height: 100%;
   width: 100%;
 `;
-
 const Data = styled.View`
   width: 100%;
   flex-direction: row;
   margin-bottom: 100px;
 `;
-
 const Contents = styled.View`
   margin-right: 100px;
 `;
-
 const Image = styled.Image`
   height: 50px;
   width: 50px;
   margin-bottom: 5px;
 `;
-
 const Name = styled.Text`
-  color: #a6ffa5;
+  color: white;
   font-size: 18px;
   margin-bottom: 5px;
   opacity: 0.5;
 `;
-
 const Value = styled.Text`
-  color: #a6ffa5;
+  color: white;
   font-size: 20px;
 `;
 
@@ -47,13 +42,13 @@ const BottomContainer = ({
     <Container>
       <Data>
         <Contents>
-          <Image source={require("../../assets/Icon_New moon_32_32.png")} />
+          <Image source={require("../../assets/Icon_New_moon_32_32.png")} />
           <Name>New moon</Name>
           <Value>{`${newMonthText} ${newDate} , ${newYear}`}</Value>
         </Contents>
 
         <Contents>
-          <Image source={require("../../assets/Icon_Full moon_32_32.png")} />
+          <Image source={require("../../assets/Icon_Full_moon_32_32.png")} />
           <Name>Full moon</Name>
           <Value>{`${fullMonthText} ${fullDate} , ${fullYear}`}</Value>
         </Contents>

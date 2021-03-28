@@ -33,8 +33,6 @@ const MoonImage = styled.Image`
   width: ${RADIUS * 2}px;
   height: ${RADIUS * 2}px;
 `;
-const View = styled.View``;
-const Text = styled.Text``;
 
 const Moon = ({ data: { illumination }, leftMoon }) => {
   return (

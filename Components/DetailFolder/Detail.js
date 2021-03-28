@@ -9,15 +9,13 @@ const Container = styled.View`
   align-items: center;
   padding-left: 30px;
   padding-top: 100px;
-  background-color: black;
 `;
-
 const Image = styled.Image`
   height: 150%;
   width: 150%;
   position: absolute;
-  left: 100;
-  top: -160;
+  left: 100px;
+  top: -160px;
 `;
 
 const DetailContainer = ({ data }) => {

@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components/native";
 import { ActivityIndicator, StatusBar } from "react-native";
 import DatePick from "../../Components/DatePick";
-import Percent from "../../Components/Percent";
 import Detail from "../../Components/DetailFolder/Detail";
 import Moon from "../../Components/Moon";
 
