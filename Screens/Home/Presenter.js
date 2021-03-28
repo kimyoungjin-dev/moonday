@@ -43,7 +43,7 @@ const Presenter = ({
             backgroundColor="black"
             barStyle="light-content"
           />
-          {!editing && <Moon data={data} leftMoon={leftMoon} />}
+          <Moon data={data} leftMoon={leftMoon} />
           {editing && <Detail data={data} />}
           {!editing && <DatePick time={time} setTime={setTime} />}
         </>
