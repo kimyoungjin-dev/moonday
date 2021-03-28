@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Platform } from "react-native";
 import styled from "styled-components/native";
 import DateTimePicker from "@react-native-community/datetimepicker";
-import { LinearGradient } from "expo-linear-gradient";
 
 const View = styled.View`
   justify-content: center;
+  z-index: 999;
 `;
 const DateTimePickerContainer = styled.TouchableOpacity`
   background-color: white;
@@ -19,12 +19,6 @@ const ButtonText = styled.Text`
   font-size: 20px;
   text-align: center;
   color: white;
-`;
-const Gradient = styled.View`
-  width: 100%;
-  height: 40px;
-  position: absolute;
-  top: 0px;
 `;
 
 const DatePick = ({ time, setTime }) => {
@@ -59,19 +53,6 @@ const DatePick = ({ time, setTime }) => {
           />
         </DateTimePickerContainer>
       )}
-
-      <Gradient>
-        <LinearGradient
-          colors={["rgba(0,0,0,1)", "rgba(0,0,0,0)"]}
-          style={{ height: 40, top: 0 }}
-        />
-      </Gradient>
-      <Gradient>
-        <LinearGradient
-          colors={["rgba(0,0,0,0)", "rgba(0,0,0,1)"]}
-          style={{ height: 40, top: 120 }}
-        />
-      </Gradient>
 
       <Button onPress={onPress} onLongPress={onLongPress}>
         <ButtonText>{dateToString(time)}</ButtonText>
