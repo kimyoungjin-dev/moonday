@@ -11,13 +11,12 @@ const Container = styled.View`
   padding-top: 100px;
   position: absolute;
 `;
-
 const Image = styled.Image`
   height: 150%;
   width: 150%;
   position: absolute;
-  left: 100;
-  top: -160;
+  left: 100px;
+  top: -160px;
 `;
 
 const DetailContainer = ({ data }) => {

@@ -7,33 +7,28 @@ const Top = styled.View`
   width: 100%;
   height: 300px;
 `;
-
 const StateContents = styled.View`
   margin-bottom: 30px;
 `;
-
 const MoonState = styled.Text`
-  color: #a6ffa5;
+  color: white;
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 5px;
 `;
-
 const MoonPercent = styled.Text`
   opacity: 0.8;
-  color: #a6ffa5;
+  color: white;
   font-size: 24px;
 `;
-
 const CurrentName = styled.Text`
   opacity: 0.4;
   margin-bottom: 5px;
   font-size: 20px;
-  color: #a6ffa5;
+  color: white;
 `;
-
 const CurrentDate = styled.Text`
-  color: #a6ffa5;
+  color: white;
   font-size: 18px;
 `;
 
