@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components/native";
 
-const RADIUS = 60;
+const RADIUS = 120;
 
 const Container = styled.View`
-  width: ${RADIUS * 2}px;
+  width: 100%;
   height: ${RADIUS * 2}px;
+  margin-top: 200px;
+  justify-content: center;
+  align-items: center;
 `;
 const MoonContainer = styled.View`
   width: ${RADIUS * 2}px;
