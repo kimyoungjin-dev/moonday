@@ -4,7 +4,7 @@ import { ActivityIndicator, StatusBar } from "react-native";
 import DatePick from "../../Components/DatePick";
 import Percent from "../../Components/Percent";
 import Detail from "../../Components/DetailFolder/Detail";
-import Animation from "../../Components/Animation";
+import Moon from "../../Components/Moon";
 
 const Container = styled.TouchableHighlight`
   flex: 1;
@@ -39,10 +39,9 @@ const Presenter = ({
             backgroundColor="black"
             barStyle="light-content"
           />
-          <Percent data={data} />
+          <Moon data={data} leftMoon={leftMoon} />
           {editing && <Detail data={data} toggleEditing={toggleEditing} />}
           {!editing && <DatePick time={time} setTime={setTime} />}
-          <Animation data={data} leftMoon={leftMoon} />
         </>
       )}
     </Container>
