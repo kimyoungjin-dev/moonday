@@ -12,7 +12,7 @@ const DateTimePickerContainer = styled.TouchableOpacity`
   width: 100%;
   height: 180px;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.5);
 `;
 const TodayButtonContainer = styled.View`
   width: 100%;
