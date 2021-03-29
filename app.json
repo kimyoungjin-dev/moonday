@@ -4,7 +4,7 @@
     "slug": "moonday",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/moon.png",
     "splash": {
       "image": "./assets/starBackground.png",
       "resizeMode": "cover",
@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/moon.png",
         "backgroundColor": "#000000"
       }
     },
