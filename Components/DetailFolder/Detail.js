@@ -1,4 +1,3 @@
-import moment from "moment";
 import React from "react";
 import styled from "styled-components/native";
 import BottomContainer from "./BottomContainer";
@@ -11,40 +10,25 @@ const Container = styled.View`
   padding-top: 100px;
   position: absolute;
 `;
-const Image = styled.Image`
-  height: 150%;
-  width: 150%;
-  position: absolute;
-  left: 100px;
-  top: -160px;
-`;
 
-const DetailContainer = ({ data }) => {
-  const mementData = moment();
-  const shortMonth = mementData._locale._monthsShort;
-  //full moon
-  const fullYear = new Date(data?.fm?.ut * 1000).getFullYear();
-  const fullMonth = new Date(data?.fm?.ut * 1000).getMonth();
-  const fullMonthText = shortMonth[fullMonth];
-  const fullDate = new Date(data?.fm?.ut * 1000).getDate();
-
-  //next moon
-  const newYear = new Date(data?.nnm?.ut * 1000).getFullYear();
-  const newMonth = new Date(data?.nnm?.ut * 1000).getMonth() + 1;
-  const newMonthText = shortMonth[newMonth];
-  const newDate = new Date(data?.nnm?.ut * 1000).getDate();
+const DetailContainer = ({ data, time, illumination }) => {
+  const fullMoonDate = data.fm.dt;
+  const newMoonDate = data.nnm.dt;
 
   return (
     <Container>
-      <TopContainer />
+      <TopContainer
+        stage={data.stage}
+        time={time}
+        illumination={illumination}
+      />
       <BottomContainer
-        fullYear={fullYear}
-        fullDate={fullDate}
-        fullMonthText={fullMonthText}
-        newYear={newYear}
-        newMonthText={newMonthText}
-        newDate={newDate}
-        data={data}
+        fullYear={fullMoonDate.substring(16, 20)}
+        fullDate={fullMoonDate.substring(9, 11)}
+        fullMonth={fullMoonDate.substring(12, 15)}
+        newYear={newMoonDate.substring(15, 19)}
+        newMonth={newMoonDate.substring(11, 14)}
+        newDate={newMoonDate.substring(8, 10)}
       />
     </Container>
   );
