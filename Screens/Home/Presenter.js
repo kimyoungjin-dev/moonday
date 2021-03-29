@@ -1,19 +1,47 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import styled from "styled-components/native";
-import { ActivityIndicator, StatusBar } from "react-native";
+import {
+  ActivityIndicator,
+  StatusBar,
+  Animated,
+  Dimensions,
+} from "react-native";
 import DatePick from "../../Components/DatePick";
 import Detail from "../../Components/DetailFolder/Detail";
 import Moon from "../../Components/Moon";
 
+const { width: WIDTH, height: HEIGHT } = Dimensions.get("window");
 const Container = styled.TouchableHighlight`
   flex: 1;
   background-color: black;
   justify-content: space-between;
 `;
-
 const Image = styled.Image`
   position: absolute;
 `;
+const View = styled.View``;
+
+const FadeInView = (props) => {
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 5000,
+    }).start();
+  }, [fadeAnim]);
+
+  return (
+    <Animated.View
+      style={{
+        ...props.style,
+        opacity: fadeAnim,
+      }}
+    >
+      {props.children}
+    </Animated.View>
+  );
+};
 
 const Presenter = ({
   time,
@@ -37,18 +65,27 @@ const Presenter = ({
         <ActivityIndicator size="small" color="white" />
       ) : (
         <>
-          <Image source={require("../../assets/starBackground.png")} />
-          <StatusBar
-            animated={true}
-            backgroundColor="black"
-            barStyle="light-content"
-          />
-          <Moon data={data} leftMoon={leftMoon} />
-          {editing ? (
-            <Detail data={data} />
-          ) : (
-            <DatePick time={time} setTime={setTime} />
-          )}
+          <FadeInView
+            style={{
+              width: WIDTH,
+              height: HEIGHT,
+            }}
+          >
+            <View>
+              <Image source={require("../../assets/starBackground.png")} />
+              <StatusBar
+                animated={true}
+                backgroundColor="black"
+                barStyle="light-content"
+              />
+              <Moon data={data} leftMoon={leftMoon} />
+              {editing ? (
+                <Detail data={data} />
+              ) : (
+                <DatePick time={time} setTime={setTime} />
+              )}
+            </View>
+          </FadeInView>
         </>
       )}
     </Container>

@@ -16,7 +16,6 @@ const MoonContainer = styled.View`
   width: ${RADIUS * 2}px;
   height: ${RADIUS * 2}px;
   border-radius: ${RADIUS}px;
-  background-color: white;
 `;
 const ArcShadow = styled.View`
   width: ${RADIUS * 2}px;
