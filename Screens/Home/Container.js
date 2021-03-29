@@ -10,8 +10,6 @@ const Container = () => {
   const [leftMoon, setLeftMoon] = useState();
   const [loading, setLoading] = useState(true);
 
-  const toggleEditing = () => setEditing((prev) => !prev);
-
   const getData = async () => {
     try {
       const {
@@ -42,7 +40,7 @@ const Container = () => {
       time={time}
       setTime={setTime}
       data={data}
-      toggleEditing={toggleEditing}
+      setEditing={setEditing}
       editing={editing}
       leftMoon={leftMoon}
     />

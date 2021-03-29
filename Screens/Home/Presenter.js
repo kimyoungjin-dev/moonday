@@ -19,8 +19,8 @@ const Presenter = ({
   time,
   setTime,
   data,
-  toggleEditing,
   editing,
+  setEditing,
   leftMoon,
   loading,
 }) => {
@@ -31,7 +31,7 @@ const Presenter = ({
         flex: loading ? 1 : 1,
         justifyContent: loading ? "center" : "space-between",
       }}
-      onPress={() => toggleEditing((prev) => !prev)}
+      onPress={() => setEditing((prev) => !prev)}
     >
       {loading ? (
         <ActivityIndicator size="small" color="white" />
@@ -44,8 +44,12 @@ const Presenter = ({
             barStyle="light-content"
           />
           <Moon data={data} leftMoon={leftMoon} />
-          {editing && <Detail data={data} />}
-          {!editing && <DatePick time={time} setTime={setTime} />}
+
+          {editing ? (
+            <Detail data={data} />
+          ) : (
+            <DatePick time={time} setTime={setTime} />
+          )}
         </>
       )}
     </Container>
