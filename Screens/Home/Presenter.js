@@ -44,7 +44,6 @@ const Presenter = ({
             barStyle="light-content"
           />
           <Moon data={data} leftMoon={leftMoon} />
-
           {editing ? (
             <Detail data={data} />
           ) : (

@@ -33,26 +33,74 @@ const MoonImage = styled.Image`
   width: ${RADIUS * 2}px;
   height: ${RADIUS * 2}px;
 `;
+const MoonOpacity = styled.Image`
+  width: ${RADIUS * 2}px;
+  height: ${RADIUS * 2}px;
+  position: absolute;
+  z-index: 9;
+  opacity: 0.1;
+`;
+const View = styled.View``;
 
 const Moon = ({ data: { illumination }, leftMoon }) => {
   return (
     <Container>
+      <MoonOpacity source={require("../assets/moon.png")} />
+
       {illumination && (
         <MoonContainer>
           <MoonImage source={require("../assets/moon.png")} />
 
-          <HalfShadow
+          <MaskedView
             style={{
-              backgroundColor: leftMoon ? "transparent" : "black",
-              left: 0,
+              width: RADIUS * 2,
+              height: RADIUS * 2,
+              position: "absolute",
+              backgroundColor: "black",
             }}
-          />
-          <HalfShadow
+            maskElement={
+              <View
+                style={{
+                  width: RADIUS * 2,
+                  height: RADIUS * 2,
+                  borderRadius: RADIUS,
+                  backgroundColor: "black",
+                }}
+              />
+            }
+          >
+            <HalfShadow
+              style={{
+                backgroundColor: leftMoon ? "transparent" : "black",
+                left: 0,
+              }}
+            />
+          </MaskedView>
+
+          <MaskedView
             style={{
-              backgroundColor: leftMoon ? "black" : "transparent",
-              left: RADIUS,
+              width: RADIUS * 2,
+              height: RADIUS * 2,
+              position: "absolute",
             }}
-          />
+            maskElement={
+              <View
+                style={{
+                  width: RADIUS * 2,
+                  height: RADIUS * 2,
+                  borderRadius: RADIUS,
+                  backgroundColor: "black",
+                }}
+              />
+            }
+          >
+            <HalfShadow
+              style={{
+                backgroundColor: leftMoon ? "black" : "transparent",
+                left: RADIUS,
+              }}
+            />
+          </MaskedView>
 
           {illumination < 50 ? (
             <ArcShadow
