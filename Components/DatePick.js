@@ -28,7 +28,6 @@ const TodayButtonText = styled.Text`
   font-size: 18px;
   text-align: center;
   color: white;
-  font-weight: 300;
 `;
 const Button = styled.TouchableOpacity`
   padding: 6px 14px;
@@ -40,7 +39,6 @@ const ButtonText = styled.Text`
   font-size: 22px;
   text-align: center;
   color: white;
-  font-weight: 200;
 `;
 
 const DatePick = ({ time, setTime }) => {

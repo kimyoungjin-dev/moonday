@@ -12,24 +12,20 @@ const StateContents = styled.View`
 const MoonState = styled.Text`
   color: white;
   font-size: 32px;
-  font-weight: 200;
 `;
 const MoonPercent = styled.Text`
   opacity: 0.5;
   color: white;
   font-size: 18px;
-  font-weight: 300;
 `;
 const CurrentName = styled.Text`
   opacity: 0.5;
   font-size: 18px;
   color: white;
-  font-weight: 300;
 `;
 const CurrentDate = styled.Text`
   color: white;
   font-size: 20px;
-  font-weight: 200;
 `;
 
 const TopContainer = ({ stage, time, illumination }) => {

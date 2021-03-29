@@ -18,12 +18,10 @@ const Name = styled.Text`
   color: white;
   font-size: 16px;
   opacity: 0.5;
-  font-weight: 300;
 `;
 const Value = styled.Text`
   color: white;
   font-size: 16px;
-  font-weight: 200;
 `;
 const NewMoonIcon = styled.View`
   width: 40px;
