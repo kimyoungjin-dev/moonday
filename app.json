@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/moon.png",
     "splash": {
-      "image": "./assets/starBackground.png",
+      "image": "./assets/splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#000000"
     },
