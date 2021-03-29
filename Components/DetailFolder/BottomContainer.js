@@ -8,11 +8,9 @@ const Container = styled.View`
 `;
 const Data = styled.View`
   width: 100%;
-  flex-direction: row;
-  margin-bottom: 100px;
 `;
 const Contents = styled.View`
-  margin-right: 100px;
+  margin-bottom: 60px;
 `;
 const Name = styled.Text`
   color: white;
@@ -59,20 +57,6 @@ const BottomContainer = ({
         <Contents>
           <FullMoonIcon />
           <Name>Full moon</Name>
-          <Value>{`${fullMonth} ${fullDate}, ${fullYear}`}</Value>
-        </Contents>
-      </Data>
-
-      <Data>
-        <Contents>
-          <NewMoonIcon />
-          <Name>Moonrise</Name>
-          <Value>{`${newMonth} ${newDate}, ${newYear}`}</Value>
-        </Contents>
-
-        <Contents>
-          <FullMoonIcon />
-          <Name>Moonset</Name>
           <Value>{`${fullMonth} ${fullDate}, ${fullYear}`}</Value>
         </Contents>
       </Data>
