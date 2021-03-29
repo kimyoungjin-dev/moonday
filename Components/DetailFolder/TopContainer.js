@@ -1,50 +1,52 @@
 import React from "react";
 import styled from "styled-components/native";
 import { View } from "react-native";
-import moment from "moment";
 
 const Top = styled.View`
   width: 100%;
   height: 300px;
 `;
 const StateContents = styled.View`
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 `;
 const MoonState = styled.Text`
   color: white;
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 5px;
+  font-size: 32px;
+  font-weight: 200;
 `;
 const MoonPercent = styled.Text`
-  opacity: 0.8;
+  opacity: 0.5;
   color: white;
-  font-size: 24px;
+  font-size: 18px;
+  font-weight: 300;
 `;
 const CurrentName = styled.Text`
-  opacity: 0.4;
-  margin-bottom: 5px;
-  font-size: 20px;
+  opacity: 0.5;
+  font-size: 18px;
   color: white;
+  font-weight: 300;
 `;
 const CurrentDate = styled.Text`
   color: white;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 200;
 `;
 
-const TopContainer = () => {
-  const currentData = moment().format("MMM DD, YYYY");
+const TopContainer = ({ stage, time, illumination }) => {
+  const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+  const timeText = (time) =>
+    String(time).substring(4, 10) + ", " + String(time).substring(11, 15);
 
   return (
     <Top>
       <StateContents>
-        <MoonState>Full Moon</MoonState>
-        <MoonPercent>(100%)</MoonPercent>
+        <MoonState>{capitalize(stage)} Moon</MoonState>
+        <MoonPercent>{Math.round(illumination)}%</MoonPercent>
       </StateContents>
 
       <View>
         <CurrentName>Date</CurrentName>
-        <CurrentDate>{currentData}</CurrentDate>
+        <CurrentDate>{timeText(time)}</CurrentDate>
       </View>
     </Top>
   );

@@ -14,20 +14,31 @@ const Data = styled.View`
 const Contents = styled.View`
   margin-right: 100px;
 `;
-const Image = styled.Image`
-  height: 50px;
-  width: 50px;
-  margin-bottom: 5px;
-`;
 const Name = styled.Text`
   color: white;
-  font-size: 18px;
-  margin-bottom: 5px;
+  font-size: 16px;
   opacity: 0.5;
+  font-weight: 300;
 `;
 const Value = styled.Text`
   color: white;
-  font-size: 20px;
+  font-size: 16px;
+  font-weight: 200;
+`;
+const NewMoonIcon = styled.View`
+  width: 40px;
+  height: 40px;
+  margin-bottom: 4px;
+  border-radius: 20px;
+  border: 1px solid white;
+`;
+const FullMoonIcon = styled.View`
+  width: 40px;
+  height: 40px;
+  margin-bottom: 4px;
+  border-radius: 20px;
+  border: 1px solid white;
+  background-color: white;
 `;
 
 const BottomContainer = ({
@@ -35,37 +46,36 @@ const BottomContainer = ({
   fullDate,
   newYear,
   newDate,
-  data,
-  fullMonthText,
-  newMonthText,
+  fullMonth,
+  newMonth,
 }) => {
   return (
     <Container>
       <Data>
         <Contents>
-          <Image source={require("../../assets/Icon_New_moon_32_32.png")} />
+          <NewMoonIcon />
           <Name>New moon</Name>
-          <Value>{`${newMonthText} ${newDate} , ${newYear}`}</Value>
+          <Value>{`${newMonth} ${newDate}, ${newYear}`}</Value>
         </Contents>
 
         <Contents>
-          <Image source={require("../../assets/Icon_Full_moon_32_32.png")} />
+          <FullMoonIcon />
           <Name>Full moon</Name>
-          <Value>{`${fullMonthText} ${fullDate} , ${fullYear}`}</Value>
+          <Value>{`${fullMonth} ${fullDate}, ${fullYear}`}</Value>
         </Contents>
       </Data>
 
       <Data>
         <Contents>
-          <Image source={require("../../assets/Icon_Moonrise_32_32.png")} />
+          <NewMoonIcon />
           <Name>Moonrise</Name>
-          <Value>New moon data</Value>
+          <Value>{`${newMonth} ${newDate}, ${newYear}`}</Value>
         </Contents>
 
         <Contents>
-          <Image source={require("../../assets/Icon_Moonset_32_32.png")} />
+          <FullMoonIcon />
           <Name>Moonset</Name>
-          <Value>Moonset data</Value>
+          <Value>{`${fullMonth} ${fullDate}, ${fullYear}`}</Value>
         </Contents>
       </Data>
     </Container>

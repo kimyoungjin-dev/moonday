@@ -19,7 +19,10 @@ const Container = styled.TouchableHighlight`
 const Image = styled.Image`
   position: absolute;
 `;
-const View = styled.View``;
+const View = styled.View`
+  height: 100%;
+  justify-content: space-between;
+`;
 
 const FadeInView = (props) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -65,6 +68,12 @@ const Presenter = ({
         <ActivityIndicator size="small" color="white" />
       ) : (
         <>
+          <StatusBar
+            animated={true}
+            backgroundColor="black"
+            barStyle="light-content"
+          />
+          <Image source={require("../../assets/starBackground.png")} />
           <FadeInView
             style={{
               width: WIDTH,
@@ -72,15 +81,13 @@ const Presenter = ({
             }}
           >
             <View>
-              <Image source={require("../../assets/starBackground.png")} />
-              <StatusBar
-                animated={true}
-                backgroundColor="black"
-                barStyle="light-content"
-              />
               <Moon data={data} leftMoon={leftMoon} />
               {editing ? (
-                <Detail data={data} />
+                <Detail
+                  data={data}
+                  time={time}
+                  illumination={data.illumination}
+                />
               ) : (
                 <DatePick time={time} setTime={setTime} />
               )}

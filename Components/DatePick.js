@@ -6,20 +6,21 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 const View = styled.View`
   justify-content: center;
   z-index: 999;
+  align-items: center;
 `;
 const DateTimePickerContainer = styled.TouchableOpacity`
   width: 100%;
-  height: 160px;
+  height: 180px;
   justify-content: center;
   background-color: #ffffff;
 `;
 const TodayButtonContainer = styled.View`
+  width: 100%;
   align-items: flex-end;
 `;
 const TodayButton = styled.TouchableOpacity`
-  width: 80px;
-  padding: 6px 8px;
-  border: 1px solid white;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 40px;
   margin: 16px;
 `;
@@ -27,14 +28,19 @@ const TodayButtonText = styled.Text`
   font-size: 18px;
   text-align: center;
   color: white;
+  font-weight: 300;
 `;
 const Button = styled.TouchableOpacity`
-  padding: 16px;
+  padding: 6px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  margin-bottom: 100px;
 `;
 const ButtonText = styled.Text`
-  font-size: 20px;
+  font-size: 22px;
   text-align: center;
   color: white;
+  font-weight: 200;
 `;
 
 const DatePick = ({ time, setTime }) => {
