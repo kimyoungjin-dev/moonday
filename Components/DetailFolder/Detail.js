@@ -1,22 +1,31 @@
-import React from "react";
-import styled from "styled-components/native";
+import React, { useEffect, useRef } from "react";
+import { Animated } from "react-native";
 import BottomContainer from "./BottomContainer";
 import TopContainer from "./TopContainer";
 
-const Container = styled.View`
-  height: 100%;
-  align-items: center;
-  padding-left: 30px;
-  padding-top: 100px;
-  position: absolute;
-`;
-
 const DetailContainer = ({ data, time, illumination }) => {
+  const position = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(position, {
+      toValue: 1,
+      duration: 1000,
+    }).start();
+  }, []);
+
   const fullMoonDate = data.fm.dt;
   const newMoonDate = data.nnm.dt;
-
   return (
-    <Container>
+    <Animated.View
+      style={{
+        opacity: position,
+        height: "100%",
+        alignItems: "center",
+        paddingLeft: 30,
+        paddingTop: 100,
+        position: "absolute",
+      }}
+    >
       <TopContainer
         stage={data.stage}
         time={time}
@@ -30,7 +39,7 @@ const DetailContainer = ({ data, time, illumination }) => {
         newMonth={newMoonDate.substring(11, 14)}
         newDate={newMoonDate.substring(8, 10)}
       />
-    </Container>
+    </Animated.View>
   );
 };
 
