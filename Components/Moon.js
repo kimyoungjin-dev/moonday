@@ -4,11 +4,13 @@ import MaskedView from "@react-native-masked-view/masked-view";
 
 const RADIUS = 120;
 const MARGIN_TOP = 200;
+const MARGIN_LEFT = 0;
 
 const Container = styled.View`
   width: 100%;
   height: ${RADIUS * 2}px;
   margin-top: ${MARGIN_TOP}px;
+  margin-left: ${MARGIN_LEFT}px;
   justify-content: center;
   align-items: center;
 `;
