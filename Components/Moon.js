@@ -6,7 +6,7 @@ const RADIUS = 120;
 const MARGIN_TOP = 200;
 const MARGIN_LEFT = 0;
 
-const Container = styled.View`
+const Container = styled.TouchableOpacity`
   width: 100%;
   height: ${RADIUS * 2}px;
   margin-top: ${MARGIN_TOP}px;
@@ -43,9 +43,9 @@ const MoonOpacity = styled.Image`
 `;
 const View = styled.View``;
 
-const Moon = ({ data: { illumination }, leftMoon }) => {
+const Moon = ({ data: { illumination }, leftMoon, setEditing }) => {
   return (
-    <Container>
+    <Container onPress={() => setEditing((prev) => !prev)}>
       <MoonOpacity source={require("../assets/moon.png")} />
 
       {illumination && (

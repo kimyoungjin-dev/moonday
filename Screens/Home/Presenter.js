@@ -24,15 +24,6 @@ const View = styled.View`
   justify-content: space-between;
 `;
 
-const MoonButton = styled.TouchableOpacity`
-  z-index: 999;
-  position: absolute;
-  height: 240px;
-  width: 270px;
-  top: 200;
-  left: 80;
-`;
-
 const FadeInView = (props) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
@@ -89,8 +80,7 @@ const Presenter = ({
             }}
           >
             <View>
-              <MoonButton onPress={() => setEditing((prev) => !prev)} />
-              <Moon data={data} leftMoon={leftMoon} />
+              <Moon data={data} leftMoon={leftMoon} setEditing={setEditing} />
 
               {editing ? (
                 <Detail
