@@ -24,6 +24,15 @@ const View = styled.View`
   justify-content: space-between;
 `;
 
+const MoonButton = styled.TouchableOpacity`
+  z-index: 999;
+  position: absolute;
+  height: 240px;
+  width: 270px;
+  top: 200;
+  left: 80;
+`;
+
 const FadeInView = (props) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
@@ -62,7 +71,6 @@ const Presenter = ({
         flex: loading ? 1 : 1,
         justifyContent: loading ? "center" : "space-between",
       }}
-      onPress={() => setEditing((prev) => !prev)}
     >
       {loading ? (
         <ActivityIndicator size="small" color="white" />
@@ -81,7 +89,9 @@ const Presenter = ({
             }}
           >
             <View>
+              <MoonButton onPress={() => setEditing((prev) => !prev)} />
               <Moon data={data} leftMoon={leftMoon} />
+
               {editing ? (
                 <Detail
                   data={data}
