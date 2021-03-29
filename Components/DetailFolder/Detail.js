@@ -20,9 +20,9 @@ const DetailContainer = ({ data, time, illumination }) => {
       style={{
         opacity: position,
         height: "100%",
-        alignItems: "center",
         paddingLeft: 30,
         paddingTop: 100,
+        paddingBottom: 200,
         position: "absolute",
       }}
     >
