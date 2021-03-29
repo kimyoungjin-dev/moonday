@@ -5,6 +5,7 @@ import TopContainer from "./TopContainer";
 
 const DetailContainer = ({ data, time, illumination }) => {
   const position = useRef(new Animated.Value(0)).current;
+  console.log(1 + 1);
 
   useEffect(() => {
     Animated.timing(position, {
