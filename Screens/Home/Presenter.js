@@ -18,6 +18,7 @@ const Container = styled.TouchableHighlight`
 `;
 const Image = styled.Image`
   position: absolute;
+  opacity: 0.7;
 `;
 const View = styled.View`
   height: 100%;
