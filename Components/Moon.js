@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 import MaskedView from "@react-native-masked-view/masked-view";
+import { Animated } from "react-native";
 
 const RADIUS = 120;
 const MARGIN_TOP = 200;
@@ -13,11 +14,6 @@ const Container = styled.TouchableOpacity`
   margin-left: ${MARGIN_LEFT}px;
   justify-content: center;
   align-items: center;
-`;
-const MoonContainer = styled.View`
-  width: ${RADIUS * 2}px;
-  height: ${RADIUS * 2}px;
-  border-radius: ${RADIUS}px;
 `;
 const ArcShadow = styled.View`
   width: ${RADIUS * 2}px;
@@ -44,12 +40,26 @@ const MoonOpacity = styled.Image`
 const View = styled.View``;
 
 const Moon = ({ data: { illumination }, leftMoon, setEditing }) => {
-  return (
-    <Container onPress={() => setEditing((prev) => !prev)}>
-      <MoonOpacity source={require("../assets/moon.png")} />
+  const [click, setclick] = useState(false);
 
+  return (
+    <Container
+      onPress={() => {
+        setEditing((prev) => !prev);
+        setclick(!click);
+      }}
+    >
       {illumination && (
-        <MoonContainer>
+        <Animated.View
+          style={{
+            width: click ? RADIUS * 0 : RADIUS * 2,
+            height: click ? RADIUS * 1 : RADIUS * 2,
+            transform: [{ scaleX: click ? 2 : 1 }, { scaleY: click ? 2 : 1 }],
+            borderRadius: RADIUS,
+          }}
+        >
+          <MoonOpacity source={require("../assets/moon.png")} />
+
           <MoonImage source={require("../assets/moon.png")} />
 
           <MaskedView
@@ -153,7 +163,7 @@ const Moon = ({ data: { illumination }, leftMoon, setEditing }) => {
               </MaskedView>
             </ArcShadow>
           )}
-        </MoonContainer>
+        </Animated.View>
       )}
     </Container>
   );
